@@ -26,7 +26,7 @@ public class FamilyActivity extends AppCompatActivity {
         wordList.add(new Word("Hiema","younger_sister", R.drawable.family_younger_sister));
         wordList.add(new Word("Kiku","daughter", R.drawable.family_daughter));
 
-        WordArrayAdapter itemsAdapter = new WordArrayAdapter(this, wordList);
+        WordArrayAdapter itemsAdapter = new WordArrayAdapter(this, wordList, R.color.category_family_dark);
         listView.setAdapter(itemsAdapter);
     }
 }

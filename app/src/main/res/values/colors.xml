@@ -25,13 +25,17 @@
 
     <!-- Background color for the numbers category -->
     <color name="category_numbers">#FD8E09</color>
+    <color name="category_numbers_dark">#EB8310</color>
 
     <!-- Background color for the family members category -->
     <color name="category_family">#379237</color>
+    <color name="category_family_dark">#317731</color>
 
     <!-- Background color for the colors category -->
     <color name="category_colors">#8800A0</color>
+    <color name="category_colors_dark">#74048A</color>
 
     <!-- Background color for the phrases category -->
     <color name="category_phrases">#16AFCA</color>
+    <color name="category_phrases_dark">#1E9DC0</color>
 </resources>
