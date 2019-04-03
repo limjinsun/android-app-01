@@ -38,4 +38,8 @@
     <!-- Background color for the phrases category -->
     <color name="category_phrases">#16AFCA</color>
     <color name="category_phrases_dark">#1E9DC0</color>
+
+    <!-- Background color for the phrases category -->
+    <color name="category_countdown">#3949AB</color>
+    <color name="category_countdown_dark">#5362BB</color>
 </resources>

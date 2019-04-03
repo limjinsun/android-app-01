@@ -23,6 +23,9 @@
     <string name="category_numbers">Numbers</string>
     <!-- Category name for the vocabulary words for family members [CHAR LIMIT=20] -->
     <string name="category_family">Family Members</string>
+    <!-- Category name for countdown [CHAR LIMIT=20] -->
+    <string name="category_countdown">Countdown</string>
+
     <string name="title_activity_colors">Colors</string>
     <string name="title_activity_phrases">Phrases</string>
 </resources>

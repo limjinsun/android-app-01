@@ -40,6 +40,11 @@
         <item name="colorPrimaryDark">@color/category_phrases</item>
     </style>
 
+    <style name="CountdownTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/category_countdown</item>
+        <item name="colorPrimaryDark">@color/category_countdown</item>
+    </style>
+
     <!-- Style for a category of vocabulary words -->
     <style name="CategoryStyle">
         <item name="android:layout_width">match_parent</item>

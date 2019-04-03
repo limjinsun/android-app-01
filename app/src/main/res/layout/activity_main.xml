@@ -47,4 +47,10 @@
         android:background="@color/category_phrases"
         android:text="@string/category_phrases" />
 
+    <TextView
+        android:id="@+id/countdown"
+        style="@style/CategoryStyle"
+        android:background="@color/category_countdown"
+        android:text="@string/category_countdown" />
+
 </LinearLayout>
