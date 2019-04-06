@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -14,7 +13,7 @@ import java.util.ArrayList;
 
 public class PhrasesActivity extends AppCompatActivity {
 
-    private MediaPlayer mPlayer = new MediaPlayer();
+    private MediaPlayer mPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +21,6 @@ public class PhrasesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_phrases);
 
         final Context currentContext = getApplicationContext();
-
         ListView listView = (ListView) findViewById(R.id.listView);
 
         final ArrayList<Word> wordList = new ArrayList<Word>();
@@ -43,12 +41,24 @@ public class PhrasesActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Word currentWord = wordList.get(position);
-
-                mPlayer.reset();
                 Toast.makeText(currentContext, "Clicked", Toast.LENGTH_SHORT).show();
+                releaseMediaPlayer();
                 mPlayer = MediaPlayer.create(currentContext, currentWord.getSound());
                 mPlayer.start();
+                mPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        releaseMediaPlayer();
+                    }
+                });
             }
         });
+    }
+
+    private void releaseMediaPlayer () {
+        if(mPlayer != null){
+            mPlayer.release();
+        }
+        mPlayer = null;
     }
 }

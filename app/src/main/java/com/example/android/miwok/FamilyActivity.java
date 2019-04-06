@@ -12,7 +12,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class FamilyActivity extends AppCompatActivity {
-    private MediaPlayer mPlayer = new MediaPlayer();
+    private MediaPlayer mPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,12 +42,24 @@ public class FamilyActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Word currentWord = wordList.get(position);
-
-                mPlayer.reset();
                 Toast.makeText(currentContext, "Clicked", Toast.LENGTH_SHORT).show();
+                releaseMediaPlayer();
                 mPlayer = MediaPlayer.create(currentContext, currentWord.getSound());
                 mPlayer.start();
+                mPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        releaseMediaPlayer();
+                    }
+                });
             }
         });
+    }
+
+    private void releaseMediaPlayer () {
+        if(mPlayer != null){
+            mPlayer.release();
+        }
+        mPlayer = null;
     }
 }

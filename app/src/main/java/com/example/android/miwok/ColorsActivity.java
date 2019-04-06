@@ -15,7 +15,8 @@ import java.util.ArrayList;
 
 public class ColorsActivity extends AppCompatActivity {
 
-    private MediaPlayer mPlayer = new MediaPlayer();
+    private MediaPlayer mPlayer;
+    boolean isMediaPlayerExist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,17 +39,28 @@ public class ColorsActivity extends AppCompatActivity {
 
         WordArrayAdapter itemsAdapter = new WordArrayAdapter(this, wordList, R.color.category_colors_dark);
         listView.setAdapter(itemsAdapter);
-
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Word currentWord = wordList.get(position);
+                SingleToast.show(currentContext, "Clicked", Toast.LENGTH_SHORT);
 
-                mPlayer.reset();
-                Toast.makeText(currentContext, "Clicked", Toast.LENGTH_SHORT).show();
+                if(isMediaPlayerExist){
+                    MediaPlayerManagerHelper.releaseMediaplayer(mPlayer);
+                    isMediaPlayerExist = false;
+                }
                 mPlayer = MediaPlayer.create(currentContext, currentWord.getSound());
+                isMediaPlayerExist = true;
                 mPlayer.start();
+                mPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        MediaPlayerManagerHelper.releaseMediaplayer(mp);
+                        isMediaPlayerExist = false;
+                    }
+                });
             }
         });
+
     }
 }
