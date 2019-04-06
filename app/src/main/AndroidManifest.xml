@@ -34,8 +34,14 @@
             android:theme="@style/PhrasesTheme" />
         <activity
             android:name=".CountdownActivity"
-            android:label="Countdown"
-            android:theme="@style/CountdownTheme"/>
+            android:label="@string/category_countdown"
+            android:theme="@style/CountdownTheme" />
+        <activity
+            android:name=".MusicplayerActivity"
+            android:label="@string/category_musicplayer"
+            android:theme="@style/MusicPlayerTheme" />
+
     </application>
+
 
 </manifest>

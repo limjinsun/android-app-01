@@ -32,7 +32,6 @@ public class WordArrayAdapter extends ArrayAdapter<Word> {
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_layout, parent,false);
         }
-
         // Get the data item for this position
         Word word = getItem(position);
 

@@ -25,6 +25,8 @@
     <string name="category_family">Family Members</string>
     <!-- Category name for countdown [CHAR LIMIT=20] -->
     <string name="category_countdown">Countdown</string>
+    <!-- Category name for musicplayer [CHAR LIMIT=20] -->
+    <string name="category_musicplayer">Music Player</string>
 
     <string name="title_activity_colors">Colors</string>
     <string name="title_activity_phrases">Phrases</string>

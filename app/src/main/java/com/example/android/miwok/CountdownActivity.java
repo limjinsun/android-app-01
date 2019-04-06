@@ -16,8 +16,14 @@ public class CountdownActivity extends AppCompatActivity {
         setContentView(R.layout.activity_countdown);
 
         final TextView mTextView = (TextView) findViewById(R.id.text_view1);
-
         final Button mButton = (Button) findViewById(R.id.button1);
+
+        // Hey, why does it hat to be final?
+        // https://stackoverflow.com/a/4556562/4735043
+        /*  Final essentially means that the variable will not be reassigned at any point and will remain around.
+            This means that inner classes, like your listener, can trust that it wont be reassigned by some other thread which could cause all kinds of trouble.
+            final can also be used to modify a method or class definition, that would mean that the method can't be overriden by a subclass, or that the class cannot be extended.
+         */
 
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,5 +43,6 @@ public class CountdownActivity extends AppCompatActivity {
                 }.start();
             }
         });
+
     }
 }

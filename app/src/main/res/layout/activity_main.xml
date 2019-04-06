@@ -53,4 +53,11 @@
         android:background="@color/category_countdown"
         android:text="@string/category_countdown" />
 
+    <TextView
+        android:id="@+id/musicplayer"
+        style="@style/CategoryStyle"
+        android:background="@color/category_musicplayer"
+        android:text="@string/category_musicplayer"/>
+
+
 </LinearLayout>

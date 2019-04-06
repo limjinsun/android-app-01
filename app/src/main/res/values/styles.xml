@@ -45,6 +45,11 @@
         <item name="colorPrimaryDark">@color/category_countdown</item>
     </style>
 
+    <style name="MusicPlayerTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/category_musicplayer</item>
+        <item name="colorPrimaryDark">@color/category_musicplayer</item>
+    </style>
+
     <!-- Style for a category of vocabulary words -->
     <style name="CategoryStyle">
         <item name="android:layout_width">match_parent</item>
