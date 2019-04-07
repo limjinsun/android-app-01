@@ -15,8 +15,10 @@
  */
 package com.example.android.miwok;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
@@ -30,59 +32,12 @@ public class MainActivity extends AppCompatActivity {
         // Set the content of the activity to use the activity_main.xml layout file
         setContentView(R.layout.activity_main);
 
-        TextView numbers = (TextView) findViewById(R.id.numbers);
-        numbers.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, NumbersActivity.class);
-                startActivity(i);
-            }
-        });
+        ViewPager mViewPager = (ViewPager) findViewById(R.id.viewpager);
+        CategoryAdapter mMyAdapter = new CategoryAdapter(getSupportFragmentManager(), getApplicationContext());
+        mViewPager.setAdapter(mMyAdapter);
 
-        TextView family = (TextView) findViewById(R.id.family);
-        family.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, FamilyActivity.class);
-                startActivity(i);
-            }
-        });
-
-        TextView colors = (TextView) findViewById(R.id.colors);
-        colors.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, ColorsActivity.class);
-                startActivity(i);
-            }
-        });
-
-        TextView phrases = (TextView) findViewById(R.id.phrases);
-        phrases.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, PhrasesActivity.class);
-                startActivity(i);
-            }
-        });
-
-        TextView countdown = (TextView) findViewById(R.id.countdown);
-        countdown.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, CountdownActivity.class);
-                startActivity(i);
-            }
-        });
-
-        TextView musicplayer = (TextView) findViewById(R.id.musicplayer);
-        musicplayer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, MusicplayerActivity.class);
-                startActivity(i);
-            }
-        });
+        TabLayout mTabLayout = (TabLayout) findViewById(R.id.tablayout);
+        mTabLayout.setupWithViewPager(mViewPager);
 
     }
 }

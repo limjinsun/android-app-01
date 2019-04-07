@@ -16,30 +16,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".NumbersActivity"
-            android:label="@string/category_numbers"
-            android:theme="@style/NumbersTheme" />
-        <activity
-            android:name=".FamilyActivity"
-            android:label="@string/category_family"
-            android:theme="@style/FamilyTheme" />
-        <activity
-            android:name=".ColorsActivity"
-            android:label="@string/category_colors"
-            android:theme="@style/ColorsTheme" />
-        <activity
-            android:name=".PhrasesActivity"
-            android:label="@string/category_phrases"
-            android:theme="@style/PhrasesTheme" />
-        <activity
-            android:name=".CountdownActivity"
-            android:label="@string/category_countdown"
-            android:theme="@style/CountdownTheme" />
-        <activity
-            android:name=".MusicplayerActivity"
-            android:label="@string/category_musicplayer"
-            android:theme="@style/MusicPlayerTheme" />
 
     </application>
 
