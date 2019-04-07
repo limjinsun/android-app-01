@@ -22,7 +22,7 @@ public class FamilyActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_family);
+        setContentView(R.layout.list_layout);
 
         final Context currentContext = getApplicationContext();
         mAudioManager = (AudioManager) currentContext.getSystemService(Context.AUDIO_SERVICE);
@@ -67,7 +67,7 @@ public class FamilyActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Word currentWord = wordList.get(position);
-                Toast.makeText(currentContext, "Clicked", Toast.LENGTH_SHORT).show();
+                SingleToast.show(currentContext, "Clicked", Toast.LENGTH_SHORT);
                 releaseMediaPlayer();
 
                 int res = mAudioManager.requestAudioFocus(mOnAudioFocusChangeListener,

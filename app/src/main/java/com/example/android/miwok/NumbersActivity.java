@@ -24,7 +24,7 @@ public class NumbersActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_numbers);
+        setContentView(R.layout.list_layout);
 
         final Context currentContext = getApplicationContext();
         mAudioManager = (AudioManager) currentContext.getSystemService(Context.AUDIO_SERVICE);

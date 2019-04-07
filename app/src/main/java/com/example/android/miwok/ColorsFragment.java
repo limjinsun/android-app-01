@@ -3,17 +3,37 @@ package com.example.android.miwok;
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class ColorsActivity extends AppCompatActivity {
+public class ColorsFragment extends Fragment {
+
+    public ColorsFragment() {
+        // Required empty public constructor
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        /**
+         * onCreate is called on initial creation of the fragment.
+         * You do your non graphical initializations here.
+         * It finishes even before the layout is inflated and the fragment is visible.
+         *
+         * onCreateView is called to inflate the layout of the fragment
+         * i.e graphical initialization usually takes place here.
+         * It is always called sometimes after the onCreate method.
+         */
+    }
 
     private MediaPlayer mPlayer;
     private boolean isMediaPlayerExist;
@@ -22,11 +42,12 @@ public class ColorsActivity extends AppCompatActivity {
     private AudioManager.OnAudioFocusChangeListener mOnAudioFocusChangeListener;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.list_layout);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View rootView = inflater.inflate(R.layout.list_layout, container, false);
 
-        final Context currentContext = getApplicationContext();
+        final Context currentContext = rootView.getContext();
         mAudioManager = (AudioManager) currentContext.getSystemService(Context.AUDIO_SERVICE);
         mOnAudioFocusChangeListener = new AudioManager.OnAudioFocusChangeListener() {
             @Override
@@ -67,9 +88,9 @@ public class ColorsActivity extends AppCompatActivity {
         wordList.add(new Word("Assa","red", R.drawable.color_red, R.raw.color_red));
         wordList.add(new Word("Chuku","white", R.drawable.color_white, R.raw.color_white));
 
-        WordArrayAdapter itemsAdapter = new WordArrayAdapter(this, wordList, R.color.category_colors_dark);
+        WordArrayAdapter itemsAdapter = new WordArrayAdapter(getActivity(), wordList, R.color.category_colors_dark);
 
-        ListView listView = (ListView) findViewById(R.id.listView);
+        ListView listView = (ListView) rootView.findViewById(R.id.listView);
         listView.setAdapter(itemsAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -95,10 +116,12 @@ public class ColorsActivity extends AppCompatActivity {
                 }
             }
         });
+
+        return rootView;
     }
 
     @Override
-    protected void onStop() {
+    public void onStop() {
         super.onStop();
         if(isMediaPlayerExist){
             MediaPlayerHelper.releaseMediaplayer(mPlayer);
@@ -106,4 +129,6 @@ public class ColorsActivity extends AppCompatActivity {
             isMediaPlayerExist = false;
         }
     }
+
+
 }
