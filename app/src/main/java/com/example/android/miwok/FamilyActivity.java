@@ -1,9 +1,11 @@
 package com.example.android.miwok;
 
 import android.content.Context;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -13,15 +15,37 @@ import java.util.ArrayList;
 
 public class FamilyActivity extends AppCompatActivity {
     private MediaPlayer mPlayer;
+    private String TAG = "-- tag";
+    private AudioManager mAudioManager;
+    private AudioManager.OnAudioFocusChangeListener mOnAudioFocusChangeListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_family);
-        // 아이디는 액티비티가 다르면 중복되어도 노상관.
-        ListView listView = (ListView) findViewById(R.id.listView);
 
         final Context currentContext = getApplicationContext();
+        mAudioManager = (AudioManager) currentContext.getSystemService(Context.AUDIO_SERVICE);
+        mOnAudioFocusChangeListener = new AudioManager.OnAudioFocusChangeListener() {
+            @Override
+            public void onAudioFocusChange(int focusChange) {
+                if (focusChange == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT ||
+                        focusChange == AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK) {
+                    mPlayer.pause();
+                    mPlayer.seekTo(0);
+                } else if (focusChange == AudioManager.AUDIOFOCUS_GAIN) {
+                    mPlayer.start();
+                } else if (focusChange == AudioManager.AUDIOFOCUS_LOSS) {
+                    MediaPlayerHelper.releaseMediaplayer(mPlayer);
+                }
+            }
+        };
+        final MediaPlayer.OnCompletionListener mMyOnCompletionListner = new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                releaseMediaPlayer();
+            }
+        };
 
         final ArrayList<Word> wordList = new ArrayList<Word>();
         wordList.add(new Word("nutti","father", R.drawable.family_father, R.raw.family_father));
@@ -36,29 +60,40 @@ public class FamilyActivity extends AppCompatActivity {
         wordList.add(new Word("Kiku","daughter", R.drawable.family_daughter, R.raw.family_daughter));
 
         WordArrayAdapter itemsAdapter = new WordArrayAdapter(this, wordList, R.color.category_family_dark);
+        // 아이디는 액티비티가 다르면 중복되어도 노상관.
+        ListView listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(itemsAdapter);
-
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Word currentWord = wordList.get(position);
                 Toast.makeText(currentContext, "Clicked", Toast.LENGTH_SHORT).show();
                 releaseMediaPlayer();
-                mPlayer = MediaPlayer.create(currentContext, currentWord.getSound());
-                mPlayer.start();
-                mPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                    @Override
-                    public void onCompletion(MediaPlayer mp) {
-                        releaseMediaPlayer();
-                    }
-                });
+
+                int res = mAudioManager.requestAudioFocus(mOnAudioFocusChangeListener,
+                        AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN_TRANSIENT);
+
+                if(res == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
+                    Log.wtf(TAG, "AUDIOFOCUS_REQUEST_GRANTED");
+                    mPlayer = MediaPlayer.create(currentContext, currentWord.getSound());
+                    mPlayer.start();
+                    mPlayer.setOnCompletionListener(mMyOnCompletionListner);
+                }
             }
         });
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        releaseMediaPlayer();
     }
 
     private void releaseMediaPlayer () {
         if(mPlayer != null){
             mPlayer.release();
+            Log.wtf("-- mediaplayer released ", mPlayer.toString());
+            mAudioManager.abandonAudioFocus(mOnAudioFocusChangeListener);
         }
         mPlayer = null;
     }

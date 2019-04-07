@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import java.util.ArrayList;
 
@@ -27,7 +27,7 @@ public class WordArrayAdapter extends ArrayAdapter<Word> {
 
         Log.e("GetView ", getContext().getPackageResourcePath());
 
-        // convertView is used to reuse old view.
+        // ConvertView is used to reuse old view.
         // Check if an existing view is being reused, otherwise inflate the view
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_layout, parent,false);
@@ -35,7 +35,7 @@ public class WordArrayAdapter extends ArrayAdapter<Word> {
         // Get the data item for this position
         Word word = getItem(position);
 
-        LinearLayout textContainerLayout =  (LinearLayout) convertView.findViewById(R.id.text_container);
+        RelativeLayout textContainerLayout =  (RelativeLayout) convertView.findViewById(R.id.text_container);
         int color = ContextCompat.getColor(getContext(), colorResourceId);
         textContainerLayout.setBackgroundColor(color);
 
