@@ -28,8 +28,7 @@ public class FamilyFragment extends Fragment {
     private AudioManager.OnAudioFocusChangeListener mOnAudioFocusChangeListener;
 
     @Override
-    public View onCreateView(LayoutInflater inflater,
-                             ViewGroup container,
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.list_layout, container, false);
@@ -58,7 +57,6 @@ public class FamilyFragment extends Fragment {
         };
 
         final ArrayList<Word> wordList = new ArrayList<Word>();
-
         wordList.add(new Word("nutti","father", R.drawable.family_father, R.raw.family_father));
         wordList.add(new Word("otiiko","grandfather", R.drawable.family_grandfather, R.raw.family_grandfather));
         wordList.add(new Word("tolookosu","mother", R.drawable.family_mother, R.raw.family_mother));
@@ -71,7 +69,6 @@ public class FamilyFragment extends Fragment {
         wordList.add(new Word("Kiku","daughter", R.drawable.family_daughter, R.raw.family_daughter));
 
         WordArrayAdapter itemsAdapter = new WordArrayAdapter(currentContext, wordList, R.color.category_family_dark);
-        // 아이디는 액티비티가 다르면 중복되어도 노상관.
         ListView listView = (ListView) rootView.findViewById(R.id.listView);
         listView.setAdapter(itemsAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -112,4 +109,3 @@ public class FamilyFragment extends Fragment {
 
 
 }
-

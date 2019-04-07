@@ -2,10 +2,13 @@ package com.example.android.miwok;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +33,7 @@ public class CountdownFragment extends Fragment {
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 mButton.setEnabled(false);
                 mButton.setBackgroundColor(Color.parseColor("#dddddd"));
                 // startCountDown();
@@ -50,4 +54,8 @@ public class CountdownFragment extends Fragment {
         return rootView;
     }
 
+    @Override
+    public void onStop() {
+        super.onStop();
+    }
 }

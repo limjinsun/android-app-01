@@ -49,7 +49,6 @@ public class PhrasesFragment extends Fragment {
                 }
             }
         };
-
         final MediaPlayer.OnCompletionListener mMyCompletionListener = new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
@@ -90,10 +89,8 @@ public class PhrasesFragment extends Fragment {
                 }
             }
         });
-
         return rootView;
     }
-
 
     @Override
     public void onStop() {
@@ -109,5 +106,6 @@ public class PhrasesFragment extends Fragment {
         }
         mPlayer = null;
     }
+
 
 }
