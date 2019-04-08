@@ -1,7 +1,6 @@
-package com.example.android.miwok;
+package helperClasses;
 
 import android.content.Context;
-import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.util.Log;

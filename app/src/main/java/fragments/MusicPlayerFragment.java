@@ -1,4 +1,4 @@
-package com.example.android.miwok;
+package fragments;
 
 import android.content.Context;
 import android.media.AudioManager;
@@ -11,8 +11,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import helperClasses.MediaPlayerHelper;
+import com.example.android.miwok.R;
+import helperClasses.SingleToast;
 
 public class MusicPlayerFragment extends Fragment {
 

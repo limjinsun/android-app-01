@@ -1,9 +1,19 @@
-package com.example.android.miwok;
+package adapters;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+
+import com.example.android.miwok.R;
+
+import fragments.ColorsFragment;
+import fragments.CountdownFragment;
+import fragments.FamilyFragment;
+import fragments.MusicPlayerFragment;
+import fragments.NumbersFragment;
+import fragments.PhrasesFragment;
+
 
 public class CategoryAdapter extends FragmentPagerAdapter {
 

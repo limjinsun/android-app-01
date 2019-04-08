@@ -1,4 +1,4 @@
-package com.example.android.miwok;
+package entities;
 
 public class Word {
 
@@ -41,4 +41,5 @@ public class Word {
     public int getSound() {
         return sound;
     }
+
 }

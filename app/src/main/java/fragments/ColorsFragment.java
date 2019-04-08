@@ -1,4 +1,4 @@
-package com.example.android.miwok;
+package fragments;
 
 import android.content.Context;
 import android.media.AudioManager;
@@ -13,7 +13,14 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.android.miwok.R;
+
 import java.util.ArrayList;
+
+import adapters.WordArrayAdapter;
+import entities.Word;
+import helperClasses.MediaPlayerHelper;
+import helperClasses.SingleToast;
 
 public class ColorsFragment extends Fragment {
 
@@ -129,6 +136,4 @@ public class ColorsFragment extends Fragment {
             isMediaPlayerExist = false;
         }
     }
-
-
 }

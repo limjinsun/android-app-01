@@ -1,4 +1,4 @@
-package com.example.android.miwok;
+package adapters;
 
 import android.content.Context;
 import android.support.v4.content.ContextCompat;
@@ -10,7 +10,12 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.example.android.miwok.R;
+
 import java.util.ArrayList;
+
+import entities.Word;
 
 public class WordArrayAdapter extends ArrayAdapter<Word> {
 

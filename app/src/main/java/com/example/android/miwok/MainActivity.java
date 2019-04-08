@@ -17,11 +17,10 @@ package com.example.android.miwok;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.TextView;
+
+import adapters.CategoryAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,6 +37,5 @@ public class MainActivity extends AppCompatActivity {
 
         TabLayout mTabLayout = (TabLayout) findViewById(R.id.tablayout);
         mTabLayout.setupWithViewPager(mViewPager);
-
     }
 }

@@ -1,9 +1,8 @@
-package com.example.android.miwok;
+package fragments;
 
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -14,7 +13,14 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.android.miwok.R;
+
 import java.util.ArrayList;
+
+import adapters.WordArrayAdapter;
+import entities.Word;
+import helperClasses.MediaPlayerHelper;
+import helperClasses.SingleToast;
 
 public class PhrasesFragment extends Fragment {
 

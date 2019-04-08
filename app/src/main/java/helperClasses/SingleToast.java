@@ -1,4 +1,4 @@
-package com.example.android.miwok;
+package helperClasses;
 
 import android.content.Context;
 import android.widget.Toast;
